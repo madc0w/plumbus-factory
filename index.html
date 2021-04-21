@@ -1,316 +1,319 @@
 <html>
-<head>
-<title>Plumbus Factory</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
-<!-- <link href="https://fonts.googleapis.com/css?family=Audiowide|Orbitron" rel="stylesheet">  -->
-<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet"> 
-<script type="text/javascript" src="game.js"></script>
-<script type="text/javascript" src="events.js"></script>
-<script type="text/javascript" src="actions.js"></script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108541115-1"></script>
-<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag() {
-		dataLayer.push(arguments);
-	}
-	gtag("js", new Date());
-	gtag("config", "UA-108541115-1");
-</script>
 
-<!-- for Facebook:  -->
-<meta property="og:title" content="Plumbus Factory Operational Control Center"/>
-<meta property="og:image" content="http://heliosophiclabs.com/plumbus-factory/images/plumbus.png"/>
-<meta property="og:description" content="Operate your own plumbus factory"/>
-<meta property="og:site_name" content="Plumbus Factory"/>
-<meta property="og:url" content="http://heliosophiclabs.com/plumbus-factory/"/>
+	<head>
+		<title>Plumbus Factory</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<!-- <link href="https://fonts.googleapis.com/css?family=Audiowide|Orbitron" rel="stylesheet">  -->
+		<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+		<script type="text/javascript" src="game.js"></script>
+		<script type="text/javascript" src="events.js"></script>
+		<script type="text/javascript" src="actions.js"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108541115-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "UA-108541115-1");
+		</script>
 
-<!--  for Twitter: -->
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="@plumbus" />
-<meta name="twitter:title" content="Plumbus Factory Operational Control Center"/>
-<meta name="twitter:description" content="Plumbus Factory Operational Control Center"/>
-<meta name="twitter:image" content="http://heliosophiclabs.com/plumbus-factory/images/plumbus.png"/>
+		<!-- for Facebook:  -->
+		<meta property="og:title" content="Plumbus Factory Operational Control Center" />
+		<meta property="og:image" content="https://madc0w.github.io/plumbus-factory/images/plumbus.png" />
+		<meta property="og:description" content="Operate your own plumbus factory" />
+		<meta property="og:site_name" content="Plumbus Factory" />
+		<meta property="og:url" content="https://madc0w.github.io/plumbus-factory/" />
+
+		<!--  for Twitter: -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@plumbus" />
+		<meta name="twitter:title" content="Plumbus Factory Operational Control Center" />
+		<meta name="twitter:description" content="Plumbus Factory Operational Control Center" />
+		<meta name="twitter:image" content="https://madc0w.github.io/plumbus-factory/images/plumbus.png" />
 
 
-</head>
-<body onLoad="onLoad();">
-	<div id="title">
-		<div id="instructional-video-link">
-			<div id="share">
-				<!-- AddToAny BEGIN -->
-				<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-				<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-				<a class="a2a_button_facebook"></a>
-				<a class="a2a_button_twitter"></a>
-				<a class="a2a_button_google_plus"></a>
+	</head>
+
+	<body onLoad="onLoad();">
+		<div id="title">
+			<div id="instructional-video-link">
+				<div id="share">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+						<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+						<a class="a2a_button_facebook"></a>
+						<a class="a2a_button_twitter"></a>
+						<a class="a2a_button_google_plus"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
 				</div>
-				<script async src="https://static.addtoany.com/menu/page.js"></script>
-				<!-- AddToAny END -->
+				<a target="plumbus_video" href="https://www.youtube.com/embed/eMJk4y9NGvE">View instructional video</a>
 			</div>
-			<a target="plumbus_video" href="https://www.youtube.com/embed/eMJk4y9NGvE">View instructional video</a>
+			Plumbus Factory Operational Control Center
+			<div id="subtitle">Carbonright 401991 Plumbus &amp; Kimble Inc., a subsidiary of Blamf Inc.</div>
 		</div>
-		Plumbus Factory Operational Control Center
-		<div id="subtitle">Carbonright 401991 Plumbus &amp; Kimble Inc., a subsidiary of Blamf Inc.</div>
-	</div>
-	<div id="controls">
-		<button id="pause" onClick="togglePause();">pause</button>
-		<span id="speed">speed 
-			<input id="speed-slider" onChange="setSpeed(this);" type="range" min="0" max="1000" />
-		</span> 
-		<button id="reset" onClick="reset();">reset game</button>
-		<span id="hours-label">hours in operation:</span>
-		<span id="numSteps"></span>
-		<span id="brapples-label">brapples:</span>
-		<span id="brapples-container">&Delta; <span id="brapples"></span></span>
-	</div>
-	<hr />
-	<div id="state">
-		<div class="control-section">
-			<div class="header">power cost</div>
-			<table>
-				<tr>
-					<td id="brapples-container">&Delta; <span id="powerCost"></span> / MWh</td>
-				</tr>
-			</table>
-			<div class="header">base power use</div>
-			<table>
-				<tr>
-					<td id="brapples-container">&Delta; <span id="basePowerUse"></span> MW</td>
-				</tr>
-			</table>
-			<div id="insurance-header" class="header">insurance</div>
-			<div id="insurance-container"></div>
+		<div id="controls">
+			<button id="pause" onClick="togglePause();">pause</button>
+			<span id="speed">speed
+				<input id="speed-slider" onChange="setSpeed(this);" type="range" min="0" max="1000" />
+			</span>
+			<button id="reset" onClick="reset();">reset game</button>
+			<span id="hours-label">hours in operation:</span>
+			<span id="numSteps"></span>
+			<span id="brapples-label">brapples:</span>
+			<span id="brapples-container">&Delta; <span id="brapples"></span></span>
 		</div>
-		<div class="control-section">
-			<div class="header">plumbuses</div>
-			<table>
-				<tr>
-					<td>stock</td>
-					<td id="plumbuses-stock"></td>
-				</tr>
-				<tr>
-					<td>demand</td>
-					<td id="market-demand"></td>
-				</tr>
-				<tr>
-					<td>total sold</td>
-					<td id="plumbuses-totalSold"></td>
-				</tr>
-				<tr>
-					<td>total made</td>
-					<td id="plumbuses-totalMade"></td>
-				</tr>
-				<tr>
-					<td>price</td>
-					<td id="plumbuses-price-container">&Delta; <span id="plumbuses-price"></span></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td id="plumbuses-price-control">
-						<button onClick="updateValue(this, {delta : 0.1});" class="value-control" id="plumbuses-price-dec">-</button> 
-						<button onClick="updateValue(this, {delta : 0.1});" class="value-control" id="plumbuses-price-inc">+</button>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div id="events-actions-section">
-			<div id="events-section" class="control-section">
-				<div class="header">events</div>
-				<div id="events"></div>
-			</div>
-			<div id="actions-section" class="control-section">
-				<div class="header">actions</div>
-				<div id="actions"></div>
-			</div>
-			<div id="events-actions-button-container">
-				<button onClick="toggleEventsActions();" id="toggle-events-actions-button">show events</button>
-			</div>
-		</div>
-		
 		<hr />
+		<div id="state">
+			<div class="control-section">
+				<div class="header">power cost</div>
+				<table>
+					<tr>
+						<td id="brapples-container">&Delta; <span id="powerCost"></span> / MWh</td>
+					</tr>
+				</table>
+				<div class="header">base power use</div>
+				<table>
+					<tr>
+						<td id="brapples-container">&Delta; <span id="basePowerUse"></span> MW</td>
+					</tr>
+				</table>
+				<div id="insurance-header" class="header">insurance</div>
+				<div id="insurance-container"></div>
+			</div>
+			<div class="control-section">
+				<div class="header">plumbuses</div>
+				<table>
+					<tr>
+						<td>stock</td>
+						<td id="plumbuses-stock"></td>
+					</tr>
+					<tr>
+						<td>demand</td>
+						<td id="market-demand"></td>
+					</tr>
+					<tr>
+						<td>total sold</td>
+						<td id="plumbuses-totalSold"></td>
+					</tr>
+					<tr>
+						<td>total made</td>
+						<td id="plumbuses-totalMade"></td>
+					</tr>
+					<tr>
+						<td>price</td>
+						<td id="plumbuses-price-container">&Delta; <span id="plumbuses-price"></span></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td id="plumbuses-price-control">
+							<button onClick="updateValue(this, {delta : 0.1});" class="value-control" id="plumbuses-price-dec">-</button>
+							<button onClick="updateValue(this, {delta : 0.1});" class="value-control" id="plumbuses-price-inc">+</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="events-actions-section">
+				<div id="events-section" class="control-section">
+					<div class="header">events</div>
+					<div id="events"></div>
+				</div>
+				<div id="actions-section" class="control-section">
+					<div class="header">actions</div>
+					<div id="actions"></div>
+				</div>
+				<div id="events-actions-button-container">
+					<button onClick="toggleEventsActions();" id="toggle-events-actions-button">show events</button>
+				</div>
+			</div>
 
-		<div class="control-section">
-			<div class="header">factory equipment</div>
-			<table>
-				<tr>
-					<td class="sub-header" colspan="99">dingle bop stamping machines
-						<button onClick="updateValue(this, {isSupplies : true});" class="value-control"	id="dinglebopStampingMachines-num-inc">+</button>
-					</td>
-				</tr>
-				<tr>
-					<td>num</td>
-					<td id="dinglebopStampingMachines-num"></td>
-				</tr>
-				<tr>
-					<td>cost</td>
-					<td id="dinglebopStampingMachines-cost-container">&Delta; <span id="dinglebopStampingMachines-cost"></span></td>
-				</tr>
-				<tr>
-					<td>rate</td>
-					<td id="dinglebopStampingMachines-rate"></td>
-				</tr>
-				<tr>
-					<td>power used</td>
-					<td><span id="dinglebopStampingMachines-power"></span> MW</td>
-				</tr>
-				<tr>
-					<td>blamfs needed</td>
-					<td id="dinglebopStampingMachines-workers"></td>
-				</tr>
-				<tr>
-					<td class="sub-header" colspan="99">shleem recycling belts
-						<button onClick="updateValue(this, {isSupplies : true});" class="value-control" id="shleemRecyclingBelts-num-inc">+</button>
-					</td>
-				</tr>
-				<tr>
-					<td>num</td>
-					<td id="shleemRecyclingBelts-num"></td>
-				</tr>
-				<tr>
-					<td>cost</td>
-					<td id="shleemRecyclingBelts-cost-container">&Delta; <span id="shleemRecyclingBelts-cost"></span></td>
-				</tr>
-				<tr>
-					<td>efficiency</td>
-					<td id="shleemRecyclingBelts-efficiency"></td>
-				</tr>
-				<tr>
-					<td>power used</td>
-					<td><span id="shleemRecyclingBelts-power"></span> MW</td>
-				</tr>
-				<tr>
-					<td>blamfs needed</td>
-					<td id="shleemRecyclingBelts-workers"></td>
-				</tr>
-			</table>
-		</div>
-		<div class="control-section">
-			<div class="header">supplies</div>
-			<table>
-				<tr>
-					<td class="sub-header" colspan="99">dingle bop
-						<button onClick="updateValue(this, {isSupplies : true});" class="value-control" id="dinglebop-num-inc">+</button>
-						<button onClick="updateValue(this, {isSupplies : true});" class="value-control auto-button" id="dinglebop-auto">auto</button>
-					</td>
-				</tr>
-				<tr>
-					<td>num rolls</td>
-					<td id="dinglebop-num"></td>
-				</tr>
-				<tr>
-					<td>cost</td>
-					<td id="dinglebop-cost-container">&Delta; <span id="dinglebop-cost"></span></td>
-				</tr>
-				<tr>
-					<td>stamped</td>
-					<td id="dinglebop-stamped"></td>
-				</tr>
-				<tr>
-					<td>shleemed</td>
-					<td id="dinglebop-shleemed"></td>
-				</tr>
-				<tr>
-					<td>shleem rate</td>
-					<td id="dinglebop-shleemRate"></td>
-				</tr>
-				<tr>
-					<td>per plumbus</td>
-					<td id="dinglebop-perPlumbus"></td>
-				</tr>
-				<tr>
-					<td class="sub-header" colspan="99">shleem
-						<button onClick="updateValue(this, {isSupplies : true});" class="value-control" id="shleem-num-inc">+</button>
-						<button onClick="updateValue(this, {isSupplies : true});" class="value-control auto-button" id="shleem-auto">auto</button>
-					</td>
-				</tr>
-				<tr>
-					<td>amount</td>
-					<td id="shleem-num"></td>
-				</tr>
-				<tr>
-					<td>cost</td>
-					<td id="shleem-cost-container">&Delta; <span id="shleem-cost"></span></td>
-				</tr>
-				<tr>
-					<td class="sub-header" colspan="99">grumbo
-						<button onClick="updateValue(this, {isSupplies : true});" class="value-control" id="grumbo-num-inc">+</button>
-						<button onClick="updateValue(this, {isSupplies : true});" class="value-control auto-button" id="grumbo-auto">auto</button>
-					</td>
-				</tr>
-				<tr>
-					<td>num</td>
-					<td id="grumbo-num"></td>
-				</tr>
-				<tr>
-					<td>cost</td>
-					<td id="grumbo-cost-container">&Delta; <span id="grumbo-cost"></span></td>
-				</tr>
-				<tr>
-					<td>blamfs needed</td>
-					<td id="grumbo-workers"></td>
-				</tr>
-				<tr>
-					<td class="sub-header" colspan="99">fleeb
-						<button onClick="updateValue(this, {isSupplies : true});" class="value-control" id="fleeb-num-inc">+</button>
-						<button onClick="updateValue(this, {isSupplies : true});" class="value-control auto-button" id="fleeb-auto">auto</button>
-					</td>
-				</tr>
-				<tr>
-					<td>num</td>
-					<td id="fleeb-num"></td>
-				</tr>
-				<tr>
-					<td>cost</td>
-					<td id="fleeb-cost-container">&Delta; <span id="fleeb-cost"></span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="control-section">
-			<div class="header">workers</div>
-			<table>
-				<tr>
-					<td class="sub-header" colspan="99">blamfs
-						<button onClick="updateValue(this, {isWorker : true});" class="value-control" id="workers-num-dec">-</button> 
-						<button onClick="updateValue(this, {isWorker : true});" class="value-control" id="workers-num-inc">+</button>
-					</td>
-				</tr>
-				<tr>
-					<td>num</td>
-					<td id="workers-num"></td>
-				</tr>
-				<tr>
-					<td>idlers</td>
-					<td id="workers-idlers"></td>
-				</tr>
-				<tr>
-					<td>cost per hour</td>
-					<td id="workers-cost-container">&Delta; <span id="workers-cost"></span></td>
-				</tr>
-				<tr>
-					<td class="sub-header" colspan="99">schlami
-						<button onClick="updateValue(this, {isWorker : true});" class="value-control" id="schlami-num-dec">-</button>
-						<button onClick="updateValue(this, {isWorker : true});" class="value-control"	id="schlami-num-inc">+</button>
-					</td>
-				</tr>
-				<tr>
-					<td>num</td>
-					<td id="schlami-num"></td>
-				</tr>
-				<tr>
-					<td>cost per hour</td>
-					<td id="schlami-cost-container">&Delta; <span id="schlami-cost"></span></td>
-				</tr>
-			</table>
-		</div>
-	</div>
+			<hr />
 
-	<div id="dialog-box">
-		<div id="dialog-title"></div>
-		<hr/>
-		<div id="dialog-message"></div>
-		<div id="dialog-buttons"></div>
-	</div>
-	<div id="gray-overlay"></div>
-</body>
+			<div class="control-section">
+				<div class="header">factory equipment</div>
+				<table>
+					<tr>
+						<td class="sub-header" colspan="99">dingle bop stamping machines
+							<button onClick="updateValue(this, {isSupplies : true});" class="value-control" id="dinglebopStampingMachines-num-inc">+</button>
+						</td>
+					</tr>
+					<tr>
+						<td>num</td>
+						<td id="dinglebopStampingMachines-num"></td>
+					</tr>
+					<tr>
+						<td>cost</td>
+						<td id="dinglebopStampingMachines-cost-container">&Delta; <span id="dinglebopStampingMachines-cost"></span></td>
+					</tr>
+					<tr>
+						<td>rate</td>
+						<td id="dinglebopStampingMachines-rate"></td>
+					</tr>
+					<tr>
+						<td>power used</td>
+						<td><span id="dinglebopStampingMachines-power"></span> MW</td>
+					</tr>
+					<tr>
+						<td>blamfs needed</td>
+						<td id="dinglebopStampingMachines-workers"></td>
+					</tr>
+					<tr>
+						<td class="sub-header" colspan="99">shleem recycling belts
+							<button onClick="updateValue(this, {isSupplies : true});" class="value-control" id="shleemRecyclingBelts-num-inc">+</button>
+						</td>
+					</tr>
+					<tr>
+						<td>num</td>
+						<td id="shleemRecyclingBelts-num"></td>
+					</tr>
+					<tr>
+						<td>cost</td>
+						<td id="shleemRecyclingBelts-cost-container">&Delta; <span id="shleemRecyclingBelts-cost"></span></td>
+					</tr>
+					<tr>
+						<td>efficiency</td>
+						<td id="shleemRecyclingBelts-efficiency"></td>
+					</tr>
+					<tr>
+						<td>power used</td>
+						<td><span id="shleemRecyclingBelts-power"></span> MW</td>
+					</tr>
+					<tr>
+						<td>blamfs needed</td>
+						<td id="shleemRecyclingBelts-workers"></td>
+					</tr>
+				</table>
+			</div>
+			<div class="control-section">
+				<div class="header">supplies</div>
+				<table>
+					<tr>
+						<td class="sub-header" colspan="99">dingle bop
+							<button onClick="updateValue(this, {isSupplies : true});" class="value-control" id="dinglebop-num-inc">+</button>
+							<button onClick="updateValue(this, {isSupplies : true});" class="value-control auto-button" id="dinglebop-auto">auto</button>
+						</td>
+					</tr>
+					<tr>
+						<td>num rolls</td>
+						<td id="dinglebop-num"></td>
+					</tr>
+					<tr>
+						<td>cost</td>
+						<td id="dinglebop-cost-container">&Delta; <span id="dinglebop-cost"></span></td>
+					</tr>
+					<tr>
+						<td>stamped</td>
+						<td id="dinglebop-stamped"></td>
+					</tr>
+					<tr>
+						<td>shleemed</td>
+						<td id="dinglebop-shleemed"></td>
+					</tr>
+					<tr>
+						<td>shleem rate</td>
+						<td id="dinglebop-shleemRate"></td>
+					</tr>
+					<tr>
+						<td>per plumbus</td>
+						<td id="dinglebop-perPlumbus"></td>
+					</tr>
+					<tr>
+						<td class="sub-header" colspan="99">shleem
+							<button onClick="updateValue(this, {isSupplies : true});" class="value-control" id="shleem-num-inc">+</button>
+							<button onClick="updateValue(this, {isSupplies : true});" class="value-control auto-button" id="shleem-auto">auto</button>
+						</td>
+					</tr>
+					<tr>
+						<td>amount</td>
+						<td id="shleem-num"></td>
+					</tr>
+					<tr>
+						<td>cost</td>
+						<td id="shleem-cost-container">&Delta; <span id="shleem-cost"></span></td>
+					</tr>
+					<tr>
+						<td class="sub-header" colspan="99">grumbo
+							<button onClick="updateValue(this, {isSupplies : true});" class="value-control" id="grumbo-num-inc">+</button>
+							<button onClick="updateValue(this, {isSupplies : true});" class="value-control auto-button" id="grumbo-auto">auto</button>
+						</td>
+					</tr>
+					<tr>
+						<td>num</td>
+						<td id="grumbo-num"></td>
+					</tr>
+					<tr>
+						<td>cost</td>
+						<td id="grumbo-cost-container">&Delta; <span id="grumbo-cost"></span></td>
+					</tr>
+					<tr>
+						<td>blamfs needed</td>
+						<td id="grumbo-workers"></td>
+					</tr>
+					<tr>
+						<td class="sub-header" colspan="99">fleeb
+							<button onClick="updateValue(this, {isSupplies : true});" class="value-control" id="fleeb-num-inc">+</button>
+							<button onClick="updateValue(this, {isSupplies : true});" class="value-control auto-button" id="fleeb-auto">auto</button>
+						</td>
+					</tr>
+					<tr>
+						<td>num</td>
+						<td id="fleeb-num"></td>
+					</tr>
+					<tr>
+						<td>cost</td>
+						<td id="fleeb-cost-container">&Delta; <span id="fleeb-cost"></span></td>
+					</tr>
+				</table>
+			</div>
+			<div class="control-section">
+				<div class="header">workers</div>
+				<table>
+					<tr>
+						<td class="sub-header" colspan="99">blamfs
+							<button onClick="updateValue(this, {isWorker : true});" class="value-control" id="workers-num-dec">-</button>
+							<button onClick="updateValue(this, {isWorker : true});" class="value-control" id="workers-num-inc">+</button>
+						</td>
+					</tr>
+					<tr>
+						<td>num</td>
+						<td id="workers-num"></td>
+					</tr>
+					<tr>
+						<td>idlers</td>
+						<td id="workers-idlers"></td>
+					</tr>
+					<tr>
+						<td>cost per hour</td>
+						<td id="workers-cost-container">&Delta; <span id="workers-cost"></span></td>
+					</tr>
+					<tr>
+						<td class="sub-header" colspan="99">schlami
+							<button onClick="updateValue(this, {isWorker : true});" class="value-control" id="schlami-num-dec">-</button>
+							<button onClick="updateValue(this, {isWorker : true});" class="value-control" id="schlami-num-inc">+</button>
+						</td>
+					</tr>
+					<tr>
+						<td>num</td>
+						<td id="schlami-num"></td>
+					</tr>
+					<tr>
+						<td>cost per hour</td>
+						<td id="schlami-cost-container">&Delta; <span id="schlami-cost"></span></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div id="dialog-box">
+			<div id="dialog-title"></div>
+			<hr />
+			<div id="dialog-message"></div>
+			<div id="dialog-buttons"></div>
+		</div>
+		<div id="gray-overlay"></div>
+	</body>
+
 </html>
