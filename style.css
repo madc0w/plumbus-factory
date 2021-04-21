@@ -1,0 +1,248 @@
+body {
+	background-color: #f9d9c9;
+	font-family: "Orbitron", sans-serif;
+}
+
+button {
+	font-family: "Orbitron", sans-serif;
+	background-color: #dd4069;
+	margin: 8px;
+	padding: 6px;
+	border-radius: 40px;
+	border-color: #f7ce6b;
+	border-style: double;
+	border-width: 6px;
+	cursor: pointer;
+	min-width: 40px;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+button:hover {
+	background-color: #f3909a;
+}
+
+.button.value-control {
+	margin: 0px;
+	padding-left: 12px;
+	border-radius: 100px;
+	padding-right: 12px;
+	font-weight: bold;
+	font-size: 14px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+button.inactive {
+	background-color: #bcdfdc;
+	color: #888;
+}
+
+#controls {
+	height: 46px;
+}
+
+#controls button {
+	height: 42px;
+	min-width: 72px;
+}
+
+#speed {
+	background-color: #dd4069;
+	margin: 8px;
+	padding: 6px;
+	border-radius: 40px;
+	border-color: #f7ce6b;
+	border-style: double;
+	border-width: 6px;
+}
+
+#speed-slider {
+	position: relative;
+	top: 5px;
+}
+
+#title {
+	font-size: 22px;
+	margin-bottom: 12px;
+}
+
+#subtitle {
+	font-size: 12px;
+}
+
+.header {
+	font-weight: bold;
+}
+
+.sub-header {
+	background: #f3909a;
+	padding-top: 4px;
+	border-width: 6px;
+	border-style: solid;
+	border-color: #f9d9c9;
+}
+
+table {
+	margin-left: 12px;
+}
+
+td {
+	padding: 0px;
+	padding-left: 8px;
+	vertical-align: top;
+}
+
+.control-section {
+	display: inline-block;
+	margin-left: 12px;
+	vertical-align: top;
+	min-width: 160px;
+}
+
+#brapples-container, #plumbuses-price-container {
+	min-width: 85px;
+}
+
+.auto-button {
+	min-width: 80px;
+}
+
+#plumbuses-price-control {
+	position: relative;
+	left: -20px;
+	top: -6px;
+}
+
+#dialog-box {
+	position: absolute;
+	top: 120px;
+	background-color: #f3909a;
+	padding: 16px;
+	border-radius: 40px;
+	border-color: #f7ce6b;
+	border-style: double;
+	border-width: 12px;
+	z-index: 3;
+	display: none;
+}
+
+#dialog-title {
+	font-weight: bold;
+}
+
+#dialog-buttons {
+	text-align: center;
+}
+
+#gray-overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: 2;
+	display: none;
+}
+
+#instructional-video-container {
+	text-align: center;
+}
+
+#instructional-video-link {
+	float: right;
+	font-size: 14px;
+}
+
+#instructional-video-link a {
+	text-decoration: none;
+}
+
+#events, #actions {
+	overflow: auto;
+	max-height: 164px;
+}
+
+#events-section, #actions-section {
+	min-width: 400px;
+}
+
+#events-section {
+	display: none;
+}
+
+#events-actions-section {
+	display: inline;
+}
+
+#events-actions-button-container {
+	display: inline;
+}
+
+#toggle-events-actions-button {
+	width: 120px;
+}
+
+.action-description {
+	cursor: pointer;
+	padding: 2px;
+}
+
+.action-description:hover {
+	background-color: #f3909a;
+}
+
+.action-description.inactive {
+	cursor: default;
+	color: #666;
+}
+
+.action-description.inactive:hover {
+	background-color: transparent;
+}
+
+#you-lose-video-container {
+	margin: 20px;
+	text-align: center;
+}
+
+#state {
+	min-width: 1000px;
+}
+
+#insurance-container {
+	max-height: 80px;
+	overflow: auto;
+	margin-left: 20px;
+}
+
+#insurance-header {
+	display: none;
+}
+
+.insurance-name {
+	margin-top: 4px;
+	margin-bottom: 2px;
+}
+
+.insurance-remaining {
+	background-color: #dd4069;
+	display: inline-block;
+	height: 12px;
+	border-radius: 8px;
+}
+
+.insurance-full {
+	width: 95%;
+	background-color: #f3909a;
+	border-radius: 8px;
+}
+
+#hours-label, #brapples-label {
+	font-weight: bold;
+	margin-left: 12px;
+}
+
+#share {
+	margin-bottom: 12px;	
+}
